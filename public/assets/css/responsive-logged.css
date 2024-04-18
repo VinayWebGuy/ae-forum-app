@@ -1,0 +1,115 @@
+@media screen and (max-width: 750px) {
+  nav .left {
+    width: 80px;
+  }
+  nav .left .logo {
+    font-size: 1.7rem;
+  }
+  nav .right {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  nav .right .search-box {
+    display: none;
+  }
+  nav .right .icons-section .notifications > i {
+    font-size: 1rem;
+  }
+  nav .right .icons-section .notifications .all-notifications h4 {
+    font-size: 1.2rem;
+  }
+  nav .right .icons-section .notifications .all-notifications .single-notification {
+    font-size: 0.9rem;
+  }
+  nav .right .icons-section .notifications .all-notifications .view-all {
+    font-size: 0.9rem;
+  }
+  .main .sidebar {
+    width: 80px;
+  }
+  .main .sidebar .menus h3,
+.main .sidebar .menus span {
+    display: none;
+  }
+  .main .sidebar .menus a {
+    margin: 30px 0;
+  }
+  .main .sidebar .btn {
+    display: none;
+  }
+  .query-form .ask-query textarea {
+    height: 120px;
+  }
+  .query-form .buttons {
+    font-size: 0.9rem;
+  }
+  .recent-queries .head h4 {
+    font-size: 1.1rem;
+  }
+  .recent-queries .head select {
+    padding: 3px 5px;
+  }
+  .single-query {
+    gap: 30px;
+  }
+  .single-query .query-vote i {
+    font-size: 1.3rem;
+  }
+  .single-query .query-vote .vote {
+    font-size: 1.1rem;
+  }
+  .single-query .query-title {
+    font-size: 1rem;
+  }
+  .single-query .query-desc {
+    font-size: 0.9rem;
+  }
+  .all-activity .single-activity {
+    padding: 20px 0;
+    gap: 20px;
+  }
+  .all-activity .single-activity .work {
+    align-items: center;
+  }
+  .all-activity .single-activity::before {
+    left: -40px;
+  }
+  .all-activity .single-activity::after {
+    width: 6px;
+    height: 6px;
+    left: -40px;
+  }
+  .top-tags {
+    margin-top: 25px;
+  }
+  .top-tags .single-tag a {
+    padding: 3px 7px;
+    font-size: 0.9rem;
+  }
+  .top-tags .single-tag span {
+    font-size: 0.9rem;
+  }
+  .subscription {
+    margin-top: 25px;
+  }
+  .subscription .all-plans {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .my-responses .single-response {
+    position: relative;
+  }
+  .my-responses .single-response .my-response {
+    padding: 10px 0 10px 70px;
+  }
+  .formGroup {
+    padding: 10px 10px;
+    margin-bottom: 12px;
+  }
+  .formGroup input {
+    font-size: 0.9rem;
+  }
+  .formGroup input:focus + label, .formGroup input:valid + label {
+    top: 8px;
+  }
+}/*# sourceMappingURL=responsive-logged.css.map */

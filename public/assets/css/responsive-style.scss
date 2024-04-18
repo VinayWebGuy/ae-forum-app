@@ -1,0 +1,203 @@
+@media screen and (max-width: 750px) {
+  $headerHeight: 80px;
+  $restHeight: calc(100vh - $headerHeight);
+  nav {
+    justify-content: space-between;
+    position: relative;
+    padding: 0 40px;
+    .menu {
+      position: fixed;
+      height: 100vh;
+      top: 0;
+      right: 0;
+      z-index: 999;
+      flex-direction: column;
+      background-color: #fff;
+      justify-content: flex-start;
+      padding: 20px 35px;
+      right: -400px;
+      filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.7));
+      transition: right 0.3s linear;
+      li {
+        &:first-child {
+          margin-top: 40px;
+        }
+      }
+      &.open {
+        right: 0;
+      }
+    }
+    .menu-bar {
+      cursor: pointer;
+      display: block;
+    }
+    .close-bar {
+      transition: 0.3s linear;
+      font-size: 1.4rem;
+      &.open {
+        display: block;
+      }
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      color: #f00;
+      cursor: pointer;
+      z-index: 1000;
+    }
+  }
+
+  .hero {
+    padding: 0 40px;
+    h3 {
+      font-size: 1.5rem;
+    }
+    h2 {
+      font-size: 2.2rem;
+    }
+    p {
+      width: 400px;
+    }
+    .buttons {
+      gap: 20px;
+      font-size: 1.1rem;
+    }
+  }
+  .who-we-are {
+    min-height: 0;
+    padding: 40px;
+    flex-direction: column;
+    .content {
+      h2 {
+        font-size: 2rem;
+      }
+      p {
+        font-size: 0.9rem;
+      }
+    }
+    img {
+      display: none;
+    }
+  }
+  .how-we-work {
+    min-height: 0;
+    padding: 40px;
+    flex-direction: column-reverse;
+    justify-content: center;
+
+    align-items: flex-start;
+    img {
+      display: none;
+    }
+
+    .content {
+      width: 100%;
+      h2 {
+        font-size: 2rem;
+      }
+      .steps {
+        .step {
+          font-size: 0.9rem;
+          margin: 18px 0;
+
+          i {
+            right: 20px;
+          }
+          span {
+            font-size: 4rem;
+          }
+        }
+      }
+      .btn {
+        margin-top: 10px;
+        display: inline-block;
+      }
+    }
+  }
+  .rules {
+    min-height: 0;
+    padding: 40px;
+    gap: 0;
+
+    img {
+      display: none;
+    }
+    .content {
+      width: 100%;
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+      }
+
+      .all-rules {
+        line-height: 40px;
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  section {
+    min-height: $restHeight;
+    padding: 40px;
+
+    > h2 {
+      font-size: 2.2rem;
+    }
+    .section-info {
+      flex-direction: column;
+      justify-content: center;
+
+      img {
+        width: 335px;
+      }
+      p {
+        margin-bottom: 20px;
+      }
+      h2 {
+        margin-bottom: 8px;
+      }
+    }
+  }
+
+  .all-faqs {
+    .single-faq {
+      height: 50px;
+      .faq-ques {
+        height: 50px;
+        font-size: 1rem;
+
+        span {
+          font-size: 1.2rem;
+        }
+      }
+      .faq-ans {
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  .auth-box {
+    form {
+      .formGroup {
+        padding: 15px 10px;
+
+        input {
+          font-size: 0.9rem;
+          &:focus,
+          &:valid {
+            & + label {
+              top: 10px;
+            }
+          }
+        }
+      }
+    }
+    .links {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 18px;
+      font-size: 0.9rem;
+    }
+  }
+}

@@ -1,0 +1,153 @@
+@media screen and (max-width: 750px) {
+  $sideWidth: 80px;
+  nav {
+    .left {
+      width: $sideWidth;
+      .logo {
+        font-size: 1.7rem;
+      }
+    }
+    .right {
+      width: 100%;
+      justify-content: flex-end;
+
+      .search-box {
+        display: none;
+      }
+
+      .icons-section {
+        .notifications {
+          > i {
+            font-size: 1rem;
+          }
+          .all-notifications {
+            h4 {
+              font-size: 1.2rem;
+            }
+            .single-notification {
+              font-size: 0.9rem;
+            }
+            .view-all {
+              font-size: 0.9rem;
+            }
+          }
+        }
+      }
+    }
+  }
+  .main {
+    .sidebar {
+      width: $sideWidth;
+      .menus {
+        h3,
+        span {
+          display: none;
+        }
+        a {
+          margin: 30px 0;
+        }
+      }
+      .btn {
+        display: none;
+      }
+    }
+  }
+  .query-form {
+    .ask-query {
+      textarea {
+        height: 120px;
+      }
+    }
+    .buttons {
+      font-size: 0.9rem;
+    }
+  }
+  .recent-queries {
+    .head {
+      h4 {
+        font-size: 1.1rem;
+      }
+      select {
+        padding: 3px 5px;
+      }
+    }
+  }
+  .single-query {
+    gap: 30px;
+    .query-vote {
+      i {
+        font-size: 1.3rem;
+      }
+      .vote {
+        font-size: 1.1rem;
+      }
+    }
+    .query-title {
+      font-size: 1rem;
+    }
+    .query-desc {
+      font-size: 0.9rem;
+    }
+  }
+  .all-activity {
+    .single-activity {
+      padding: 20px 0;
+      gap: 20px;
+
+      .work {
+        align-items: center;
+      }
+
+      &::before {
+        left: -40px;
+      }
+      &::after {
+        width: 6px;
+        height: 6px;
+        left: -40px;
+      }
+    }
+  }
+  .top-tags {
+    margin-top: 25px;
+
+    .single-tag {
+      a {
+        padding: 3px 7px;
+        font-size: 0.9rem;
+      }
+      span {
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  .subscription {
+    margin-top: 25px;
+    .all-plans {
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+  }
+  .my-responses {
+    .single-response {
+      position: relative;
+      .my-response {
+        padding: 10px 0 10px 70px;
+      }
+    }
+  }
+  .formGroup {
+    padding: 10px 10px;
+    margin-bottom: 12px;
+    input {
+      font-size: 0.9rem;
+      &:focus,
+      &:valid {
+        & + label {
+          top: 8px;
+        }
+      }
+    }
+  }
+}
