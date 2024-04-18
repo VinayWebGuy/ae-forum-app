@@ -78,3 +78,11 @@ $('.menu-bar').click(function () {
 $('.close-bar').click(function () {
     $('.menu').removeClass('open')
 })
+
+$('#recent_type').change(function () {
+    let type = $(this).val()
+
+    if (type == "mine") {
+        window.location.href = "/main/my-queries";
+    }
+})

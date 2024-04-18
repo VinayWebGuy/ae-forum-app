@@ -43,6 +43,10 @@ body {
     border-radius: 20px;
     border: 1px solid $color;
     cursor: pointer;
+    &.sm {
+        padding: 4px 8px;
+        font-size: 0.8rem;
+    }
     &.default-btn {
         background-color: $color;
         box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.5);
@@ -317,6 +321,12 @@ nav {
                 }
             }
         }
+        .query-error {
+            display: block;
+            margin-top: -10px;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
     }
     .buttons {
         margin-top: 10px;
@@ -352,6 +362,7 @@ nav {
     gap: 45px;
     align-items: center;
     margin: 15px 0;
+    position: relative;
     .query-vote {
         display: flex;
         flex-direction: column;
@@ -375,8 +386,19 @@ nav {
         font-size: 1.2rem;
         font-weight: 700;
     }
+    .query-askedBy {
+        margin-top: 5px;
+
+        font-weight: 600;
+        font-style: italic;
+    }
     &:hover {
         background-color: $mainColor;
+    }
+    .publish-query {
+        position: absolute;
+        top: -0;
+        right: 0;
     }
 }
 
@@ -627,6 +649,83 @@ nav {
     }
 }
 
+.query-details {
+    margin-top: 25px;
+    h2 {
+        font-family: $font1;
+        color: $color;
+    }
+    p {
+        margin: 10px 0;
+    }
+
+    .query-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .query-vote {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            i {
+                font-size: 1.6rem;
+                cursor: pointer;
+                color: rgb(156, 156, 156);
+                font-weight: 800;
+
+                &.active {
+                    color: $color;
+                }
+            }
+            span {
+                font-size: 1.4rem;
+                margin-left: 6px;
+            }
+        }
+        .askedBy {
+            font-weight: 800;
+            font-style: italic;
+        }
+    }
+}
+.post-comment {
+    margin-top: 15px;
+    h3 {
+        color: $color;
+        margin: 7px 0;
+    }
+    textarea {
+        resize: none;
+        height: 120px;
+        width: 100%;
+        border: 1px solid $textColor;
+        outline: none;
+        font-family: $font2;
+        margin-bottom: 10px;
+        padding: 10px 12px;
+    }
+}
+.recent-comments {
+    margin-top: 15px;
+    h3 {
+        color: $color;
+        margin: 8px 0;
+    }
+    .single-comment {
+        margin: 15px 0;
+        font-size: 0.9rem;
+        .username {
+            font-weight: 800;
+        }
+        .reply {
+            padding-left: 20px;
+            i {
+                rotate: 180deg;
+            }
+        }
+    }
+}
 @keyframes jerk {
     0% {
         transform: rotate(0);
@@ -642,5 +741,61 @@ nav {
     }
     100% {
         transform: rotate(0);
+    }
+}
+
+.toastr {
+    position: fixed;
+    background-color: $color;
+    color: #fff;
+    padding: 15px 10px;
+    bottom: 50px;
+    right: 20px;
+    width: 200px;
+    font-size: 0.9rem;
+
+    min-height: 50px;
+    border-radius: 8px;
+    overflow: hidden;
+    display: none;
+    filter: drop-shadow(7px 7px 5px $color);
+    .toastr-time {
+        position: absolute;
+        width: 100%;
+        height: 4px;
+        background-color: #fff;
+        bottom: 0;
+        left: 0;
+
+        &.end {
+            animation: none;
+            width: 0;
+        }
+    }
+    &.active {
+        display: block;
+        .toastr-time {
+            animation: endTime 3s linear 1 alternate;
+        }
+    }
+}
+
+@keyframes endTime {
+    to {
+        width: 0;
+    }
+}
+
+.no-data {
+    font-size: 1.6rem;
+    font-weight: 700;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+    a {
+        text-decoration: underline;
     }
 }

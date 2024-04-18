@@ -60,6 +60,8 @@
             <div class="menus">
                 <h3>Main</h3>
                 <a class="@yield('home')" href="{{url('/main')}}"><i class="fa fa-home"></i> <span>Home</span></a>
+                <a class="@yield('draft')" href="{{url('/main/draft')}}"><i class="fa fa-file"></i>
+                    <span>Draft</span></a>
                 <a class="@yield('activity')" href="{{url('/main/activity')}}"><i class="fa fa-chart-line"></i>
                     <span>Activity</span></a>
                 <h3>Forum</h3>

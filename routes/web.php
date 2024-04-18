@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\QueryController;
 
 
 
@@ -20,6 +21,7 @@ Route::name('main.')
      ->middleware(['loginauth'])
      ->group(function () {
     Route::get('/', [MainController::class, 'index']);
+    Route::get('/draft', [MainController::class, 'draft']);
     Route::get('/activity', [MainController::class, 'activity']);
     Route::get('/top-tags', [MainController::class, 'topTags']);
     Route::get('/top-queries', [MainController::class, 'topQueries']);
@@ -28,6 +30,14 @@ Route::name('main.')
     Route::get('/my-queries', [MainController::class, 'myQueries']);
     Route::get('/my-responses', [MainController::class, 'myResponses']);
 
+
+    Route::get('/tag/{tagName}', [QueryController::class,'findByTagName']);
+    Route::get('/publish-query/{qid}', [QueryController::class,'publishQuery']);
+    Route::get('/query/{qid}', [QueryController::class,'openQuery']);
+
+
+    // Post
+    Route::post('/add-query',[QueryController::class,'addQuery'])->name('addQuery');
 });
 // Post
 Route::post('register', [HomeController::class,'saveInfo'])->name('register');

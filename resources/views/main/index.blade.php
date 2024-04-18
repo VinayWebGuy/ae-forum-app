@@ -14,23 +14,29 @@
     </div>
 
 
-    <form class="query-form">
+    <form method="post" action="{{ route('main.addQuery') }}" class="query-form">
+        @csrf
         <div class="ask-query">
             <input type="text" name="title" id="title" placeholder="Title">
-            <textarea name="query" id="query" placeholder="Your query"></textarea>
+            @error('title')<span class="query-error"></span>@enderror
+            <textarea name="desc" id="desc" placeholder="Your query"></textarea>
+            @error('query')<span class="query-error"></span>@enderror
             <input type="text" name="tags" id="tags" placeholder="Press enter to add a tag">
-            <input type="hidden" id="hiddenTags" name="hiddenTags">
+            <input type="hidden" id="hiddenTags" name="tags">
+            <input type="hidden" id="status" name="status" value="1">
 
             <div class="tag-section">
-
+                <!-- Tagging interface here -->
             </div>
         </div>
         <div class="buttons">
-            <button class="btn outline-btn">Save to Draft</button>
-            <button class="btn default-btn">Publish</button>
-
+            <button type="submit" class="btn outline-btn" onclick="document.getElementById('status').value='0';">Save to
+                Draft</button>
+            <button type="submit" class="btn default-btn"
+                onclick="document.getElementById('status').value='1';">Publish</button>
         </div>
     </form>
+
 
     <div class="recent-queries">
         <div class="head">
@@ -43,45 +49,37 @@
         </div>
 
         <div class="all-queries">
-            <div class="single-query">
-                <div class="query-vote">
-                    <i class="fa fa-chevron-up active"></i>
-                    <span class="vote">6</span>
-                    <i class="fa fa-chevron-down"></i>
-                </div>
-                <a href="#" class="query-details">
-                    <div class="query-title">How to install Microsoft office 2016 in windows 10</div>
-                    <div class="query-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas
-                        veritatis asperiores aliquam natus odio ipsam?..........</div>
-                </a>
-            </div>
+            @foreach($queries as $q)
             <div class="single-query">
                 <div class="query-vote">
                     <i class="fa fa-chevron-up"></i>
-                    <span class="vote">-3</span>
-                    <i class="fa fa-chevron-down active"></i>
-                </div>
-                <a href="#" class="query-details">
-                    <div class="query-title">How to install Microsoft office 2016 in windows 10</div>
-                    <div class="query-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas
-                        veritatis asperiores aliquam natus odio ipsam?..........</div>
-                </a>
-            </div>
-            <div class="single-query">
-                <div class="query-vote">
-                    <i class="fa fa-chevron-up"></i>
-                    <span class="vote">3</span>
+                    <span class="vote">{{$q->votes}}</span>
                     <i class="fa fa-chevron-down"></i>
                 </div>
-                <a href="#" class="query-details">
-                    <div class="query-title">How to install Microsoft office 2016 in windows 10</div>
-                    <div class="query-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas
-                        veritatis asperiores aliquam natus odio ipsam?..........</div>
+                <a href="{{url('/main/query/'.$q->qid)}}" class="query-details">
+                    <div class="query-title">{{$q->title}}</div>
+                    <div class="query-desc">{!!$q->desc!!}</div>
+                    <div class="query-askedBy">{{"@".$q->username}}</div>
                 </a>
             </div>
+            @endforeach
         </div>
     </div>
 
 
 </div>
+
+@if(Session::has('success'))
+<div class="toastr active">
+    <p>{{Session::get('success')}}</p>
+    <div class="toastr-time"></div>
+</div>
+<script>
+setTimeout(() => {
+    document.querySelectorAll('.toastr').forEach(element => {
+        element.classList.remove('active');
+    });
+}, 2900);
+</script>
+@endif
 @endsection
