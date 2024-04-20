@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Query;
+use App\Models\Comment;
 use Session;
 
 class MainController extends Controller
@@ -47,9 +48,19 @@ class MainController extends Controller
     public function activity()  {
         return view('main.acitvity');
     }
-    public function topQueries()  {
-        return view('main.topQueries');
+    public function topQueries() {
+        $queries = Query::join('users', 'queries.added_by', '=', 'users.id')
+                        ->where('queries.status', 1)
+                        ->orderBy('queries.votes', 'desc') // Order by the vote column
+                        ->orderBy('queries.created_at', 'desc') // Secondary order by creation date
+                        ->limit(5)
+                        ->get(['queries.*', 'users.username as username']);
+    
+        return view('main.topQueries', compact('queries'));
     }
+    
+
+    
     public function account()  {
         return view('main.account');
     }
@@ -60,7 +71,17 @@ class MainController extends Controller
         $queries = Query::where('added_by',Session::get('id'))->orderBy('created_at', 'desc')->where('status', 1)->get();
         return view('main.myQueries', compact('queries'));
     }
-    public function myResponses()  {
-        return view('main.myResponses');
+    public function myResponses()
+    {
+        $uniqueQueryIds = Comment::where('added_by', Session::get('id'))
+                                 ->pluck('qid')
+                                 ->unique();
+    
+        $queries = Query::whereIn('qid', $uniqueQueryIds)
+                        ->with(['comments' => function($query) {
+                            $query->where('added_by', Session::get('id'));
+                        }, 'user'])->orderBy('created_at' ,'desc')
+                        ->get();
+        return view('main.myResponses', compact('queries'));
     }
 }

@@ -14,78 +14,20 @@
 
     </div>
     <div class="top-queries">
+        @foreach($queries as $q)
         <div class="single-query">
             <div class="query-vote">
-                <i class="fa fa-chevron-up active"></i>
-                <span class="vote">471</span>
-                <i class="fa fa-chevron-down"></i>
+                <!-- <i class="fa fa-chevron-up"></i> -->
+                <span class="vote voteCount">{{$q->votes}}</span>
+                <!-- <i class="fa fa-chevron-down"></i> -->
             </div>
-            <a href="#" class="query-details">
-                <div class="query-title">How to install Microsoft office 2016 in windows 10</div>
-                <div class="query-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas
-                    veritatis asperiores aliquam natus odio ipsam?..........</div>
+            <a href="{{url('/main/query/'.$q->qid)}}" class="query-details">
+                <div class="query-title">{{$q->title}}</div>
+                <div class="query-desc">{{truncateText($q->desc)}}</div>
+                <div class="query-askedBy">{{"@".$q->username}}</div>
             </a>
         </div>
-        <div class="single-query">
-            <div class="query-vote">
-                <i class="fa fa-chevron-up"></i>
-                <span class="vote">325</span>
-                <i class="fa fa-chevron-down active"></i>
-            </div>
-            <a href="#" class="query-details">
-                <div class="query-title">How to install Microsoft office 2016 in windows 10</div>
-                <div class="query-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas
-                    veritatis asperiores aliquam natus odio ipsam?..........</div>
-            </a>
-        </div>
-        <div class="single-query">
-            <div class="query-vote">
-                <i class="fa fa-chevron-up"></i>
-                <span class="vote">247</span>
-                <i class="fa fa-chevron-down"></i>
-            </div>
-            <a href="#" class="query-details">
-                <div class="query-title">How to install Microsoft office 2016 in windows 10</div>
-                <div class="query-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas
-                    veritatis asperiores aliquam natus odio ipsam?..........</div>
-            </a>
-        </div>
-        <div class="single-query">
-            <div class="query-vote">
-                <i class="fa fa-chevron-up"></i>
-                <span class="vote">222</span>
-                <i class="fa fa-chevron-down"></i>
-            </div>
-            <a href="#" class="query-details">
-                <div class="query-title">How to install Microsoft office 2016 in windows 10</div>
-                <div class="query-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas
-                    veritatis asperiores aliquam natus odio ipsam?..........</div>
-            </a>
-        </div>
-        <div class="single-query">
-            <div class="query-vote">
-                <i class="fa fa-chevron-up"></i>
-                <span class="vote">196</span>
-                <i class="fa fa-chevron-down"></i>
-            </div>
-            <a href="#" class="query-details">
-                <div class="query-title">How to install Microsoft office 2016 in windows 10</div>
-                <div class="query-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas
-                    veritatis asperiores aliquam natus odio ipsam?..........</div>
-            </a>
-        </div>
-        <div class="single-query">
-            <div class="query-vote">
-                <i class="fa fa-chevron-up"></i>
-                <span class="vote">157</span>
-                <i class="fa fa-chevron-down"></i>
-            </div>
-            <a href="#" class="query-details">
-                <div class="query-title">How to install Microsoft office 2016 in windows 10</div>
-                <div class="query-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas
-                    veritatis asperiores aliquam natus odio ipsam?..........</div>
-            </a>
-        </div>
+        @endforeach
     </div>
 </div>
 @endsection
