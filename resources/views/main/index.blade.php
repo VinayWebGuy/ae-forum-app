@@ -13,13 +13,13 @@
         </div>
     </div>
 
-
     <form method="post" action="{{ route('main.addQuery') }}" class="query-form">
         @csrf
         <div class="ask-query">
             <input type="text" name="title" id="title" placeholder="Title">
             @error('title')<span class="query-error"></span>@enderror
             <textarea name="desc" id="desc" placeholder="Your query"></textarea>
+            <p class="tip">Tip: Press ctrl + / to add code in your query.</p>
             @error('query')<span class="query-error"></span>@enderror
             <input type="text" name="tags" id="tags" placeholder="Press enter to add a tag">
             <input type="hidden" id="hiddenTags" name="tags">
@@ -52,13 +52,13 @@
             @foreach($queries as $q)
             <div class="single-query">
                 <div class="query-vote">
-                    <i class="fa fa-chevron-up"></i>
-                    <span class="vote">{{$q->votes}}</span>
-                    <i class="fa fa-chevron-down"></i>
+                    <!-- <i class="fa fa-chevron-up"></i> -->
+                    <span class="vote voteCount">{{$q->votes}}</span>
+                    <!-- <i class="fa fa-chevron-down"></i> -->
                 </div>
                 <a href="{{url('/main/query/'.$q->qid)}}" class="query-details">
                     <div class="query-title">{{$q->title}}</div>
-                    <div class="query-desc">{!!$q->desc!!}</div>
+                    <div class="query-desc">{{truncateText($q->desc)}}</div>
                     <div class="query-askedBy">{{"@".$q->username}}</div>
                 </a>
             </div>

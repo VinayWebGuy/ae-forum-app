@@ -17,13 +17,13 @@
         @foreach($queries as $q)
         <div class="single-query">
             <div class="query-vote">
-                <i class="fa fa-chevron-up"></i>
-                <span class="vote">{{$q->votes}}</span>
-                <i class="fa fa-chevron-down"></i>
+                <!-- <i class="fa fa-chevron-up"></i> -->
+                <span class="vote voteCount">{{$q->votes}}</span>
+                <!-- <i class="fa fa-chevron-down"></i> -->
             </div>
             <a href="{{url('/main/query/'.$q->qid)}}" class="query-details">
                 <div class="query-title">{{$q->title}}</div>
-                <div class="query-desc">{{$q->desc}}</div>
+                <div class="query-desc">{{truncateText($q->desc)}}</div>
             </a>
             <a class="publish-query btn default-btn sm" href="{{url('/main/publish-query/'.$q->qid)}}">Publish</a>
         </div>

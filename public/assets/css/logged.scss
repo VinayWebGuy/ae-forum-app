@@ -304,6 +304,11 @@ nav {
             font-family: $font2;
             margin-bottom: 20px;
         }
+        .tip {
+            margin-top: -25px;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
         .tag-section {
             display: flex;
             gap: 10px;
@@ -375,6 +380,8 @@ nav {
             font-weight: 800;
 
             &.active {
+                cursor: not-allowed;
+                pointer-events: none;
                 color: $color;
             }
         }
@@ -654,11 +661,44 @@ nav {
     h2 {
         font-family: $font1;
         color: $color;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 10px;
+        align-items: center;
+        .adminStatus {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            &.approved {
+                background-color: green;
+            }
+            &.denied {
+                background-color: red;
+            }
+        }
     }
     p {
         margin: 10px 0;
     }
+    .tags {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 10px;
 
+        .single-tag {
+            background-color: #777;
+            padding: 4px 7px;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+        }
+    }
     .query-info {
         display: flex;
         justify-content: space-between;
@@ -676,17 +716,32 @@ nav {
 
                 &.active {
                     color: $color;
+                    cursor: not-allowed;
+                    pointer-events: none;
                 }
             }
             span {
                 font-size: 1.4rem;
                 margin-left: 6px;
+                position: relative;
+                display: flex;
+                gap: 5px;
+                align-items: center;
+                i {
+                    cursor: pointer;
+                    color: #f00;
+                }
             }
         }
-        .askedBy {
-            font-weight: 800;
-            font-style: italic;
-        }
+    }
+    .queryAction {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+    .askedBy {
+        font-weight: 800;
+        font-style: italic;
     }
 }
 .post-comment {
@@ -797,5 +852,56 @@ nav {
 
     a {
         text-decoration: underline;
+    }
+}
+
+.query-link {
+    text-decoration: underline;
+}
+
+.voteCount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: $color;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+}
+
+.userLink {
+    font-weight: 700;
+    color: $color;
+}
+
+.codebox {
+    background-color: #222;
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin: 10px 0;
+    overflow-x: auto;
+    color: #ccc;
+    white-space: pre-wrap;
+    font-family: consolas;
+    line-height: 12px;
+    max-height: 300px;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $textColor;
+        opacity: 0.7;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #ccc;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background: #555;
     }
 }

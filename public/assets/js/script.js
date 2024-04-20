@@ -86,3 +86,70 @@ $('#recent_type').change(function () {
         window.location.href = "/main/my-queries";
     }
 })
+
+
+$(document).on('click', '.vote-query', function () {
+    let $this = $(this);
+    let type = $this.data('type');
+    let id = $this.data('id');
+    $this.siblings('.voteMe').removeClass('active').addClass('vote-query');
+
+    $this.toggleClass('active');
+    if ($this.hasClass('active')) {
+        voteQuery(id, type);
+    }
+});
+$(document).on('click', '.cancelvote', function () {
+    let $this = $(this);
+    let id = $this.data('id');
+    $('.voteMe').removeClass('active');
+
+    cancelVote(id);
+    // $this.remove();
+});
+
+
+
+function voteQuery(qid, type) {
+    $.ajax({
+        type: "GET",
+        cache: false,
+        data: { qid: qid, type: type },
+        url: '/main/vote-query',
+        success: function (response) {
+            $(`#vote-${qid}`).html(response + `<i class="fa fa-chevron-right cancelvote "
+            data-id="${qid}"></i>`)
+        }
+    })
+}
+function cancelVote(qid) {
+    $.ajax({
+        type: "GET",
+        cache: false,
+        data: { qid: qid },
+        url: '/main/cancel-vote',
+        success: function (response) {
+            $(`#vote-${qid}`).html(response)
+        }
+    })
+}
+
+
+$(document).ready(function () {
+    $('#desc').keydown(function (e) {
+        if (e.ctrlKey && e.which === 191) {
+            e.preventDefault();
+
+            let textarea = this;
+            let start = textarea.selectionStart;
+            let end = textarea.selectionEnd;
+            let text = $(textarea).val();
+            let before = text.substring(0, start);
+            let after = text.substring(end, text.length);
+
+            $(textarea).val(before + '^^ ^^' + after);
+
+            textarea.selectionStart = textarea.selectionEnd = start + 2;
+        }
+    });
+});

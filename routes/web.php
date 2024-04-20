@@ -34,10 +34,14 @@ Route::name('main.')
     Route::get('/tag/{tagName}', [QueryController::class,'findByTagName']);
     Route::get('/publish-query/{qid}', [QueryController::class,'publishQuery']);
     Route::get('/query/{qid}', [QueryController::class,'openQuery']);
+    Route::get('/vote-query', [QueryController::class,'voteQuery']);
+    Route::get('/cancel-vote', [QueryController::class,'cancelVote']);
+    Route::get('/user/{username}', [QueryController::class,'findByUsername']);
 
 
     // Post
     Route::post('/add-query',[QueryController::class,'addQuery'])->name('addQuery');
+    Route::post('/post-comment',[QueryController::class,'postComment'])->name('postComment');
 });
 // Post
 Route::post('register', [HomeController::class,'saveInfo'])->name('register');

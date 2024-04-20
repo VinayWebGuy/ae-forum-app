@@ -5,18 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Query extends Model
+class Comment extends Model
 {
     use HasFactory;
-
-    public function comments()
-    {
-        return $this->hasMany(Comment::class, 'qid', 'qid');
-    }
 
     public function user()
     {
         return $this->belongsTo(User::class, 'added_by', 'id');
     }
-
 }
