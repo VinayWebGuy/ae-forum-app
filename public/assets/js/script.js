@@ -152,4 +152,31 @@ $(document).ready(function () {
             textarea.selectionStart = textarea.selectionEnd = start + 2;
         }
     });
+    $('#comment').keydown(function (e) {
+        if (e.ctrlKey && e.which === 191) {
+            e.preventDefault();
+
+            let textarea = this;
+            let start = textarea.selectionStart;
+            let end = textarea.selectionEnd;
+            let text = $(textarea).val();
+            let before = text.substring(0, start);
+            let after = text.substring(end, text.length);
+
+            $(textarea).val(before + '^^ ^^' + after);
+
+            textarea.selectionStart = textarea.selectionEnd = start + 2;
+        }
+    });
+
+    $('.codebox-copy').on('click', function () {
+        var $this = $(this); // Capture the specific button that was clicked
+        var codeContent = $this.parent().text().replace('Copy', ''); // Get the code from the specific .codebox
+        navigator.clipboard.writeText(codeContent).then(function () {
+            $this.text('Copied!'); // Change text only for the clicked button
+            setTimeout(function () { $this.text('Copy'); }, 2000); // Reset the text of the clicked button only
+        });
+    });
 });
+
+

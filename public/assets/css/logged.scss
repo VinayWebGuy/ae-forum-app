@@ -877,10 +877,11 @@ nav {
 
 .codebox {
     background-color: #222;
-    border: 1px solid #ccc;
+    // border: 1px solid #ccc;
     padding: 10px 15px;
+    min-height: 50px;
     border-radius: 10px;
-    margin: 10px 0;
+    margin: 3px 0;
     overflow-x: auto;
     color: #ccc;
     white-space: pre-wrap;
@@ -888,6 +889,8 @@ nav {
     line-height: 12px;
     max-height: 300px;
     overflow-y: auto;
+    position: relative;
+    filter: drop-shadow(5px 7px 3px #222);
 
     &::-webkit-scrollbar {
         width: 5px;
@@ -903,5 +906,24 @@ nav {
     }
     &::-webkit-scrollbar-thumb:hover {
         background: #555;
+    }
+    .codebox-copy {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #555;
+        color: #fff;
+        border-radius: 4px;
+        padding: 4px 6px;
+        opacity: 0;
+        transition: opacity 0.3s;
+        pointer-events: none;
+    }
+    &:hover {
+        .codebox-copy {
+            opacity: 1;
+            cursor: pointer;
+            pointer-events: all;
+        }
     }
 }

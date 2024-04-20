@@ -37,7 +37,7 @@ function formatText($text) {
         '/\^\^([\s\S]+?)\^\^/',
         function ($matches) {
             // Preserve exact text formatting including spaces, tabs, and new lines
-            return '<div class="codebox"><pre>' . htmlentities($matches[1], ENT_QUOTES, 'UTF-8', false) . '</pre></div>';
+            return '<div class="codebox">  <span class="codebox-copy">Copy</span><pre>' . htmlentities($matches[1], ENT_QUOTES, 'UTF-8', false) . '</pre></div>';
         },
         $text
     );
